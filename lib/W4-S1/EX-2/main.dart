@@ -20,7 +20,11 @@ class ProductCard extends StatelessWidget {
               width: 100,
               height: 100,
             ),
+<<<<<<< HEAD
             const SizedBox(height: 8.0),
+=======
+            SizedBox(height: 8.0),
+>>>>>>> d43205137d1b197ca42a13ec5659a2f8a4c8e39d
             Text(
               product.title,
               style:const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -45,17 +49,23 @@ enum Product {
     description: 'An open-source UI software development toolkit created by Google.',
     image: 'images/flutter.png',
   ),
+<<<<<<< HEAD
   Dart1(
     title: 'Dart',
     description: 'A programming language optimized for building mobile, desktop, server, and web applications.',
     image: 'images/dart.png',
   ),
+=======
+>>>>>>> d43205137d1b197ca42a13ec5659a2f8a4c8e39d
   Firebase(
     title: 'Firebase',
     description: 'A platform developed by Google for creating mobile and web applications.',
     image: 'images/firebase.png',
   );
+<<<<<<< HEAD
   
+=======
+>>>>>>> d43205137d1b197ca42a13ec5659a2f8a4c8e39d
 
   final String title;
   final String description;
@@ -85,7 +95,10 @@ class ProductListScreen extends StatelessWidget {
   final List<Product> products = [
     Product.Dart,
     Product.Flutter,
+<<<<<<< HEAD
     Product.Dart1,
+=======
+>>>>>>> d43205137d1b197ca42a13ec5659a2f8a4c8e39d
     Product.Firebase,
   ];
 
