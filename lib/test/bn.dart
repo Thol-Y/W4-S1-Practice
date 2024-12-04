@@ -12,9 +12,13 @@ class _TemperatureScreen1State extends State<TemperatureScreen1> {
   
   double degrees = 0;
   double fahrenheit = 0;
-  void convert(){
+
+  void convert() {
     setState(() {
-      fahrenheit = degrees + 32;
+      // Parse the input text as a double
+      degrees = double.tryParse(controllerText.text) ?? 0;
+      // Convert degrees to Fahrenheit
+      fahrenheit = degrees * 9 / 5 + 32;
     });
   }
 
@@ -24,6 +28,7 @@ class _TemperatureScreen1State extends State<TemperatureScreen1> {
     controllerText.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,19 +38,13 @@ class _TemperatureScreen1State extends State<TemperatureScreen1> {
           const Center(
             child: Column(
               children: [
-                SizedBox(
-                  height: 20,
-                ),
-                //Icon
+                SizedBox(height: 20),
                 Icon(
                   Icons.thermostat,
                   color: Colors.white,
                   size: 150,
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                //Text
+                SizedBox(height: 20),
                 Text(
                   'Convert',
                   style: TextStyle(
@@ -54,13 +53,11 @@ class _TemperatureScreen1State extends State<TemperatureScreen1> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20),
               ],
             ),
           ),
-          //Text Box
+          // Input and Output
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,13 +66,12 @@ class _TemperatureScreen1State extends State<TemperatureScreen1> {
                 padding: EdgeInsets.only(left: 30, right: 30),
                 child: Text('Temperature in Degrees'),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.only(left: 30, right: 30),
                 child: TextField(
                   controller: controllerText,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     labelText: 'Enter a Temperature',
                     border: OutlineInputBorder(),
@@ -88,35 +84,35 @@ class _TemperatureScreen1State extends State<TemperatureScreen1> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               const Padding(
                 padding: EdgeInsets.only(left: 30, right: 30),
                 child: Text('Temperature in Fahrenheit'),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.only(left: 30, right: 30),
                 child: TextField(
+                  readOnly: true, // Make it read-only
                   decoration: InputDecoration(
-                    labelText: "$fahrenheit",
+                    labelText: "$fahrenheit °F",
                     border: const OutlineInputBorder(),
                     filled: true,
                     fillColor: Colors.grey[200],
                   ),
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Colors.black, // Set text color for readability
                     fontSize: 18,
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed:convert,
-                child:const Text('Convert'),
-              )
+              const SizedBox(height: 20),
+              Center(
+                child: ElevatedButton(
+                  onPressed: convert,
+                  child: const Text('Convert'),
+                ),
+              ),
             ],
           ),
         ],
